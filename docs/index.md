@@ -11,10 +11,10 @@ Instead of traditional hand-ins, we leverage peer-to-peer mentoring where studen
 ---
 
 ## Info
-* Instructor: Jonathan Jaramillo (jdj78@cornell.edu)
-* Teaching Team: [Jonathan Jaramillo, Alex Coy, Cameron Urban, Anya Prabowo, L.M. Nawrocki, Ryan Chan, Joseph Horwitz](./TeachingTeam/readme.md)
-* Class hours: Tuesday-Thursday 11:25-12.40
-* Location: Bard Hall 140
+* Instructor: [Jonathan Jaramillo](./TeachingTeam/readme.md) (jdj78@cornell.edu)
+* Teaching Team: [Rafael Gottlieb, Jiahe Chen, Liam Kain, Julian Prieto, Ignacio Romo, Larry Lu](./TeachingTeam/readme.md)
+* Class hours: Tuesday-Thursday 10:10-11:25
+* Location: Upson Hall 142
 * Canvas: Lecture notes and grades will be facilitated through Canvas
 * EdDiscussion: The online discussion forum can be accessed through Canvas
 * Please [fill out this form] - NB: we're making updates to this form, and will keep you posted!!
