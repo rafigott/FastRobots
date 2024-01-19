@@ -11,7 +11,7 @@ Instead of traditional hand-ins, we leverage peer-to-peer mentoring where studen
 ---
 
 ## Info
-* Instructor: [Assistant Professor Kirstin Petersen](https://cei.ece.cornell.edu/members/kirstin-h-petersen/)
+* Instructor: Jonathan Jaramillo (jdj78@cornell.edu)
 * Teaching Team: [Jonathan Jaramillo, Alex Coy, Cameron Urban, Anya Prabowo, L.M. Nawrocki, Ryan Chan, Joseph Horwitz](./TeachingTeam/readme.md)
 * Class hours: Tuesday-Thursday 11:25-12.40
 * Location: Bard Hall 140
