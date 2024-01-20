@@ -1,9 +1,9 @@
 
-# Fast Robots @ Cornell, Spring 2023
+# Fast Robots @ Cornell, Spring 2024
 
 [Return to main page](index.md)
 
-# Student Pages, Spring 2023
+# Student Pages, Spring 2024
 
 * [Adetunji, Rotimi](https://mimirotimi.github.io/#rotimi-adetunji)
 * [Alade, Tobi](https://abioticfactor.github.io/fast-robots/)

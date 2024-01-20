@@ -1,5 +1,5 @@
 
-# Fast Robots @Cornell, Spring 2023
+# Fast Robots @Cornell, Spring 2024
 
 [Return to main page](index.md)
 

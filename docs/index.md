@@ -1,6 +1,6 @@
-# ECE 4160/5160, MAE 4910/5910: Fast Robots
+# ECE 4160/5160, MAE 4190/5190: Fast Robots
 
-## Cornell University, Spring 2023
+## Cornell University, Spring 2024
 
 This course focuses on systems level design and implementation of dynamic autonomous robots. We will design a fast autonomous car and explore dynamic behaviors, acting forces, sensors, and reactive control on an embedded processor, as well as the benefit of partial off-board computation, low latency software, and noise tolerant implementation.
   
@@ -30,6 +30,7 @@ Instead of traditional hand-ins, we leverage peer-to-peer mentoring where studen
 * [Lab kit](./BOM.md)
 * [Making your own Github repository and page](./tutorials/webpage_help.md)
 * [Tutorials and Helpful Resources](./tutorials/Readme.md)
+* [Website for 2023 offering](https://cei-lab.github.io/FastRobots-2023/)
 * [Website for 2022 offering](https://cei-lab.github.io/ECE4960-2022/)
 * [Website for 2020 offering](https://cei-lab.github.io/ECE4960-2020/)
 * [Grading and extension policies](./Grading.md)
