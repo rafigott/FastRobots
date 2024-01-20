@@ -1,4 +1,4 @@
-# Fast Robots @Cornell, Spring 2024
+# Fast Robots @ Cornell
 
 [Return to main page](index.md)
 

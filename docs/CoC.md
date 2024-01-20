@@ -1,4 +1,4 @@
-# Fast Robots @ Cornell, Spring 2024
+# Fast Robots @ Cornell
 
 ## Academic Integrity
 

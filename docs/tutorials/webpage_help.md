@@ -1,6 +1,4 @@
-# ECE 4960: Fast Robots
-
-## Cornell, Fall 2020
+# Fast Robots @ Cornell
 
 ### Resources for making your own Github repository and Github page
 
