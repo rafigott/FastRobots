@@ -3,35 +3,26 @@
 
 ## Teaching Team
 
-### Professor Kirstin Petersen (she/her)
-<p align="center"><img src="./KirstinPetersen.png" width="300"></p>
-Kirstin is an assistant professor at Cornell in the department of Electrical and Computer Engineering, with field memberships in CS, MAE, and SYSEN. She regularly teaches [Fast Robots](https://cei.ece.cornell.edu/teaching-2/ece-4160-fr/) and [ECE 6680 Multi-Agent Systems](https://cei.ece.cornell.edu/teaching-2/teaching/). When she is not teaching she runs the [Collective Embodied Intelligence Lab](https://cei.ece.cornell.edu/), which covers research on design and coordination of large robot collectives able to achieve complex behaviors beyond the reach of single robot systems, and corresponding studies on how social insects do so in nature. Before Cornell, Kirstin did a postdoc at the Max Planck Institute for Intelligent Systems in Germany, and a doctorate in Computer Science at Harvard University. In her spare time, Kirstin loves to hang out with her sons, kayak, and build more robots.  
+### Jonathan Jaramillo
+<p align="center"><img src="./JonathanJaramillo2.jpg" width="300"></p>
+Jonathan is a visiting lecturer at Cornell in the department of Electrical and Computer Engineering, instructing ECE 4016/5160 and co-instructing ECE 2400. He recently defended his PhD in Electrical and Computer Engineering at Cornell as part of the [Collective Embodied Intelligence Lab](https://cei.ece.cornell.edu/) under Kirstin Petersen. His research interests include computer vision, systems engineering, and robotics with applications to viticulture and digital agriculture more broadly. Prior to coming to Cornell, Jonathan studied Physics and Computer Science at Houghton University, and worked as a Systems Engineer at Lockheed Martin. In his free time, Jonathan enjoys playing guitar, cooking, and restoring his vintage fiberglass camper. 
 
-### Jonathan Jaramillo (he/him)
+### Rafael Gottlieb 
 <p align="center"><img src="./JonathanJaramillo.jpg" width="300"></p>
-Jonathan is an ECE graduate student working in the Collective Embodied Intelligence Lab under Kirstin Petersen. Having grown up near Ithaca, his research is focused on developing computer vision systems to help improve vineyard management techniques for grape growers here in the Finger Lakes region, and around the world. When he’s not in the vineyard collecting data or testing a new computer vision system, he can often be found in the lab tinkering with robots or developing CV systems for studying social insect behavior.  Jonathan received a Bachelor of Science in physics and computer science from Houghton College and spent some time working as a systems engineer for Lockheed Martin.  
+test test test
 
-### Alex Coy (he/him)
+### Jiahe Chen
 <p align="center"><img src="./AlexCoy.png" width="300"></p>
-Alex Coy is an ECE graduate student in Prof Molnar's lab with a focus on mmWave radio design. Outside of academics, he enjoys cooking, making music, and audiovisual production. Some of his favorite achievements have been being the unofficial "Barbecue Dad" for the Big Red Marching Band and baking Chicago-style deep dish pizzas that disappear within two minutes of being near college students.
+test test test
 
-### Cameron Urban (he/him)
+### Liam Kain 
 <p align="center"><img src="./CameronUrban.png" width="300"></p>
-Cameron Urban is an MAE graduate student in Dr. Farrell Helbling's lab. His research is focused on bio-inspired aerial robots. He received a Bachelor of Science in mechanical engineering from Washington University in St. Louis. In the past, he has spent time researching bat flight at Brown University, engineering space systems at MIT Lincoln Laboratory, and working with hardware-focused startups in Shenzhen, China. When not working, Cameron enjoys contributing to open-source software projects, scuba diving, and getting beaten in chess.
+test test test
 
-### Anya Prabowo (she/her)
-<p align="center"><img src="./AnyaPrabowo.jpg" width="300"></p>
-Anya Prabowo is an ECE MEng student doing research in Batten's Research Group interested in computer architecture and engineering. In her free time, she enjoys boxing and playing Ultimate Frisbee.
+### Larry Lu 
+<p align="center"><img src="./LarryLu.jpeg" width="300"></p>
+Larry Lu is a senior from Long Island majoring in ECE and CS. He is mainly interested in working on embedded systems and robotics. He's involved with a few clubs on campus including Cornell Proyos, Assorted Aces, and Esports at Cornell. In his free time, he enjoys rock climbing and playing Teamfight Tactics.
 
-### L.M. Nawrocki "Lemon" (they/them)
+### Jlian Prieto
 <p align="center"><img src="./LMNawrocki.jpg" width="300"></p>
-L.M. Nawrocki, who also goes by Lemon, is a senior studying Mechanical Engineering at Cornell and minoring in Robotics. In their spare time they also do research in Prof. Napp's lab. For fun, Lemon enjoys skiing, snowboarding, sewing, and indoor rock climbing.
-
-### Joseph Horwitz (he/him)
-<p align="center"><img src="./JosephHorwitz.jpg" width="300"></p>
-Joseph Horwitz is a Junior ECE student with a minor in CS. Hometown Washington D.C, he plays ultimate frisbee and ice hockey. He is interested in embedded systems engineering.
-
-### Ryan Chan (he/him)
-<p align="center"><img src="./RyanChan.jpg" width="300"></p>
-Ryan Chan is a senior majoring in ECE and minoring in CS. In his spare time he is also in the Cornell Archery Club, on the Cornell EWH project team, and does research in the Organic Robotics (Shepherd) Lab during the school year and Space Systems Design (Peck) Lab during the Summer. He is interested in embedded systems, PCB design, and robots. He also like turtles.
-
+test test test
