@@ -15,7 +15,6 @@ Rafi is an MAE MEng student interested in microcontrollers and feedback control 
 <p align="center"><img src="./JiaheChen.jpg" width="300"></p>
 Jiahe Chen is an ECE graduate student from Prof. Kirstin Petersen's Collective Embodied Intelligence Lab. His research focuses on simulation, algorithms, and theories of collective robotic construction. Before coming to Cornell, he obtained his master's degree in electrical engineering from the University of Pennsylvania and his bachelor's degree in Engineering Physics from Queen's University in Canada. Outside academics, he enjoys biking, hiking, road-tripping, and playing soccer. 
 
-
 ### Liam Kain 
 <p align="center"><img src="./CameronUrban.png" width="300"></p>
 test test test
@@ -25,7 +24,7 @@ test test test
 Larry Lu is a senior from Long Island majoring in ECE and CS. He is mainly interested in working on embedded systems and robotics. He's involved with a few clubs on campus including Cornell Proyos, Assorted Aces, and Esports at Cornell. In his free time, he enjoys rock climbing and playing Teamfight Tactics.
 
 ### Julian Prieto
-<p align="center"><img src="./JulianPrieto.HEIC" width="300"></p>
+<p align="center"><img src="./JulianPrieto.jpg" width="300"></p>
 Julian Prieto is an early M.Eng mechanical engineering student. In his spare time, he helps run the Cornell Foosball Club, enjoys skiing and snowboarding, and frequents Lindseth Climbing Center to do his best at rock climbing. He’s interested in automated systems and design.
 
 ### Ignacio Romo
