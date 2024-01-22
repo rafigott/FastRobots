@@ -42,11 +42,10 @@ Finally, please skim the lab instructions in order to be prepared for what to do
 
 6. Program the board to turn on the LED when you play a musical "A" note over the speaker, and off otherwise. Use your phone, computer, or similar to generate the sound. If you're having fun you could even combine the microphone and the Serial output to generate an electronic tuner.
 
-## Write-up
-To demonstrate that you've successfully completed the lab, please upload to your site a brief lab report (<600 words), with pseudo-code/code snippets (not included in the word count), photos, graphs, and/or videos documenting all steps work and what you did to make it happen.  
 
 
-## Objective
+
+## Part 2) Objective
 The purpose of part two of this lab is to establish communication between your computer and the Artemis board through the Bluetooth stack. 
 We will be using Python inside a Jupyter notebook on the computer end and the Arduino programming language on the Artemis side.
 We will also establish a framework for sending data via Bluetooth that will be useful in future labs.
@@ -337,12 +336,14 @@ In order to test your robot's sensors more effectively, it is critical to have a
 
 3. Setup a notification handler in Python to receive the string value (the **BLEStringCharactersitic** in Arduino) from the Artemis board. In the callback function, extract the time from the string.
 
-4. Add a command GET_TEMP_5s which sends an array of five timestamped internal die temperature readings using a string array, taken once per second for five seconds. For example, you could send temperatures in pairs as "T:06050\|C:28.545\|T:07082\|C:28.537" (and so on until) five timestamped temeratures are sent. Remember the characteristic size limit! Add processing code to your Python notification handler.
+4. Write a loop that gets the current time in milliseconds and sends it to your laptop to be received and processed by the notification handler. Collect these values for a few seconds and use the time stamps to determine how fast messages can be sent. What is the effective data transfer rate of this method?
 
-5. Add a command GET_TEMP_5s_RAPID which sends an array of five seconds worth of rapidly sampled temperature data. You should try to send at least fifty temperature points. Remember the characteristic size limit, and add processing code to your Python notification handler.
+5. Now create an array that can store time stamps. This array should be defined globally so that other functions can access it if need be. In the loop, rather than send each time stamp, place each time stamp into the array. (Note: you'll need some extra logic to determine when your array is full so you don't "over fill" the array.) Then add a command SEND_TIME_DATA which loops the array and sends each data point as a string to your laptop to be processed. (You can store these values in a list in python to determine if all the data was sent over.)
 
-6. Working with strings introduces significant latency, so real-time communication is not practical. Your robot needs to handle all real-time processing on-board, and communicate results in chunks (hopefully while safely stopped). The Artemis board has 384 kB of RAM. Approximately how much
-data can you store to send without running out of memory? Discuss the limitations in the form of "5 seconds of 16-bit values taken at 150 Hz."
+6. Add a second array that is the same size as the time stamp array. Use this array to store temperature readings. Each element in both arrays should correspond, e.e., the first time stamp was recorded at the same time as the first temperature reading. Then add a command GET_TEMP_READINGS that loops through both arrays concurrently and sends each temperature reading with a time stamp. The notification handler should parse these strings and add populate the data into two lists.
+
+7. Discuss the differences between these two methods, the advantages and disadvantages of both and the potential scenarios that you might choose one method over the other. How "quickly" can the second method record data? The Artemis board has 384 kB of RAM. Approximately how much data can you store to send without running out of memory?
+
 
 
 <!--
@@ -379,23 +380,19 @@ We understand that some of the sections in your webpage will overlap with the in
 
 This is not a strict requirement, but may be helpful in understanding what should be included in your webpage. It also helps with the flow of your report to show your understanding to the lab graders.
 
-1. Prelab
+1. Prelab:
 * Setup: Briefly describe the steps taken to set up your computer for Lab 2, showing any results (i.e. MAC address printing)
 * Codebase: Add a brief explanation of your understanding of the codebase and how Bluetooth works between your computer and the Artemis
 
-2. Lab Tasks: Include a brief explanation on what you did and the results for each of these sections
-* Configurations: Show that you have made the necessary configurations
-* **demo.ipynb**: Show that you were able to run all the cells before carrying out the lab tasks
-* Send Echo Command
-* Get Time Command
-* Notification Handler
-* Get Temperature Command
-* Limitations 
-* (5160) Effective Data Rate and Overhead
-* (5160) Reliability
+2. Lab Tasks:
+* Configurations: Show what the relevant configurations, anything that was specifically needed to address the tasks.
+* Include a brief explanation on what you did and results for each task.
+* Address all questions posed in the lab.
+* Include screenshots, screen recordings, pictures, or videos of relevant results (i.e. messages received in Jupyter Notebook, serial terminal print of messages received by Artemis).
 
-Please also include code __snippets__ (consider using [GitHub Gists](https://gist.github.com)) in appropriate sections if you included any written code. **Do not copy and paste all your code.** Include only relevant functions used for each task.
+3. Discussion:
+* **Briefly** describe what you've learned, challenges that you faced, and/or any unique solutions used to fix problems. It is important to keep these writeups succinct. You will not get extra points for writing more words if the content doesn't contribute to communicating your understanding of the lab material. 
 
-Include screenshots of relevant results (i.e. messages received in Jupyter Notebook, serial terminal print of messages received by Artemis).
+Please also include code __snippets__ (consider using [GitHub Gists](https://gist.github.com)) in appropriate sections if you included any written code. **Do not copy and paste all your code.** Include only relevant functions used for each task. **Points will be deducted for pasting all of your code in the lab report.** Also consider adding pseudocode snippets if large amounts of code are needed to explain your lab. 
 
 
