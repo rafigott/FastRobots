@@ -9,7 +9,7 @@ All deadlines are specified on Canvas.
 | Week    | Topic                                                                | Homework                                                                                   |
 | ------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
 | 1  (TR) | Class intro, Data, Comms, Linear Algebra refresh, T-matrices         | [Lab 1, Artemis](labs/Lab1_new.md), [Make and share your Github page ](./tutorials/webpage_help.md) |
-| 2  (TR) | Sensors (TOF, proximity, encoders, IMU) and sensor fusion            | [Lab 2, Artemis, continued](labs/Lab1_new.md)                                                  |
+| 2  (TR) | Sensors (TOF, proximity, encoders, IMU) and sensor fusion            | [Lab 1, Artemis, continued](labs/Lab1_new.md)                                                  |
 | 3  (TR) | Actuators, circuits and routing, EMI                                 | [Lab 3, TOF](labs/Lab3.md)                                                           | 
 | 4  (TR) | Linear systems, PID control                                          | [Lab 4, IMU](labs/Lab4.md)                                                           |
 | 5  (TR) | Linearizing, controllability                                         | [Lab 5, Motor driver and open loop control](labs/Lab5.md)                            |
