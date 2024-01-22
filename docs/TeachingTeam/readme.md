@@ -16,7 +16,7 @@ Rafi is an MAE MEng student interested in microcontrollers and feedback control 
 Jiahe Chen is an ECE graduate student from Prof. Kirstin Petersen's Collective Embodied Intelligence Lab. His research focuses on simulation, algorithms, and theories of collective robotic construction. Before coming to Cornell, he obtained his master's degree in electrical engineering from the University of Pennsylvania and his bachelor's degree in Engineering Physics from Queen's University in Canada. Outside academics, he enjoys biking, hiking, road-tripping, and playing soccer. 
 
 ### Liam Kain 
-<p align="center"><img src="./LiamKain.png" width="300"></p>
+<p align="center"><img src="./LiamKain.jpg" width="300"></p>
 Liam Kain is a ECE MEng student. He's interested in embedded systems, robotics, and controls engineering. In his free time, he likes to play guitar.
 
 ### Larry Lu 
