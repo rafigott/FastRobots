@@ -4,7 +4,7 @@
 
 ### Tutorials and Helpful Resources
 
-* [WSL2 setup tutorial] (.WSL_setup.md)
+* [WSL2 setup tutorial](.WSL_setup.md)
 * Related to [Github and webpages](./webpage_help.md)
 * Related to Jupyter Notebooks:
   * [Jupyter Lab Introduction](./jupyter_notebooks.md)
