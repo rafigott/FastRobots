@@ -20,7 +20,7 @@ This is the service that will let us give ownership of the Bluetooth USB to our 
 
 Download from the link below and unzip if the files come zipped.
 
-#TODO: inlcude link
+[https://cornell.app.box.com/s/7e7humgzwu7otqnvikh8m2d07z6pdao5](https://cornell.app.box.com/s/7e7humgzwu7otqnvikh8m2d07z6pdao5)
 
 Move .wslconfig to %UserProfile% (double click on the address bar in Windows File Explorer) and make sure it's named .wslconfig (the leading dot is intentional). %UserProfile$ is very likely C:\Users\<your username>.
 
