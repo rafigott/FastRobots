@@ -159,7 +159,7 @@ For any lab using Python scripts (or Jupyter notebooks), you will first need to 
 
 ### Lab 2 Codebase
 
-1. Download and unzip the [codebase](../ble_robot-1.1.zip) into your project directory.
+1. Download and unzip the [codebase](/ble_robot-1.1.zip) into your project directory.
 2. Copy the ```ble_python``` directory into your project directory.
 
 ```
