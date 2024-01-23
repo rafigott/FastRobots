@@ -1,10 +1,9 @@
 # ECE 4960/5960
 
-## Cornell, Spring 2022
+## Cornell, Spring 2024
 
 ### Tutorials and Helpful Resources
 
-* [WSL2 setup tutorial](./WSL_setup.md)
 * [WSL2 setup tutorial](./WSL_setup.md)
 * Related to [Github and webpages](./webpage_help.md)
 * Related to Jupyter Notebooks:
