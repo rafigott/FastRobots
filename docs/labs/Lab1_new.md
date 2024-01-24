@@ -34,8 +34,8 @@ Finally, please skim the lab instructions in order to be prepared for what to do
     1. Bad connections, because the USB connector needs to be pressed fully into the Artemis board.
     2. If you are running Windows and the first compilation takes a long time, try adding "C:\Program Files\Arduino" (or the particular project folder) to the antivirus exclusions. 
 2. From the setup instructions linked above, follow the instructions in "Example: Blink it Up". (Note: you may need to slow the baud rate down for it to work.)
-3. In File->Examples->Artemis Examples, run Example2_Serial. (Note: to view the output and provide input open the serial monitor in the upper right hand corner of the script window.)
-4. In File->Examples->Artemis Examples, run Example4_analogRead to test your temperature sensor. Try blowing on or touching the chip to change its temperature. It may take a while to transfer your heat. 
+3. In File->Examples->Artemis Examples, run Example4_Serial. (Note: to view the output and provide input open the serial monitor in the upper right hand corner of the script window.)
+4. In File->Examples->Artemis Examples, run Example2_analogRead to test your temperature sensor. Try blowing on or touching the chip to change its temperature. It may take a while to transfer your heat. 
 5. In File->Examples->PDM, run Example1_MicrophoneOutput to test your microphone. E.g. try whistling or speaking to change the highest frequency.
 
 # Additional tasks for 5000-level students
