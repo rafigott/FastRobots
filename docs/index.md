@@ -24,7 +24,7 @@ Instead of traditional hand-ins, we leverage peer-to-peer mentoring where studen
 ## Resources
 
 * [Schedule](./Schedule.md)
-* [Lab schedule](https://calendar.google.com/calendar/u/0?cid=czZjdnNmdTR0cm5vaGJzZ3I5ZGcwN21pOXNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ)
+* [Lab schedule](https://calendar.google.com/calendar/embed?src=c_2b550c0986ed9bac924affc66053c4a579f175f36f5372dfa35ee2fe1432d9d3%40group.calendar.google.com&ctz=America%2FNew_York)
 * [Lecture slides](./lectures/readme.md)
 * [Student pages](./StudentPages.md)
 * [Lab kit](./BOM.md)
