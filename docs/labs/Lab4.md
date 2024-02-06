@@ -57,18 +57,20 @@ Finally, please skim the lab instructions so you are ready to hit the road when 
 #### Sample Data
 
 1. Speed up execution of the main loop
-   - Similar to Lab 3, make sure you don't wait for IMU data to be ready - instead just check if data is ready in every iteration of the main loop. If ready - store it in your array. 
+   - Make sure you don't wait for IMU data to be ready to move through the loop - instead just check if data is ready in every iteration of the main loop. If ready - store it in your array. 
    - Remove any delays you've inserted for debugging
    - Serial.print statements are a significant source of delays, be sure to comment all of these out 
    - How quickly are you able to sample new values?
+   - Does your main loop on the Artemis run faster than the IMU produces new values?
 
-2. Similar to Lab 2/3, collect and store time-stamped IMU data in arrays
+2. Similar to Lab 1, collect and store time-stamped IMU data in arrays. Do this in your main loop using flags to start/stop data recording. 
 
-3. Integrate your code from Lab 3, such that the Artemis captures both ToF data and IMU data
+3. Think about how you store your data:
    - Consider if it makes sense to have one big array, or separate arrays for storing ToF, Accelerometer, and Gyroscope data, argue for your choice
+   - Consider the best data type to store your data. Should you use string, floats, double, integers? Justify your decision.
    - Consider the memory of the Artemis; how much memory can you allocate to your arrays? What does that correspond to in seconds?
 
-4. Demonstrate that your board can capture at least 5s worth of ToF data and IMU data and send it over Bluetooth to the computer.
+4. Demonstrate that your board can capture at least 5s worth of IMU data and send it over Bluetooth to the computer.
   
 <!---
 #### Cut the Coord!
@@ -81,21 +83,19 @@ Finally, please skim the lab instructions so you are ready to hit the road when 
 <img src="../Figs/Battery.png" width="600">
 -->
 
+### Record a stunt!
 
-#### Record a stunt!
+5. Mount the 850mAh battery in the RC car. Note that the standard plug on the 850mAh battery can be attached in either orientation, so *be careful* to plug it in in the right orientation (red-to-red and black-to-black wire). Add AA batteries to the remote control.
+6. Spend 5min playing around with the car (in the hallway or outside). Try to get a feel for how slow/fast it can drive forwards/backwards/turn, accelerations, etc. Record a video to show what you have tried, and discuss what you observe. This will help you establish a baseline for what you expect to see if everything works when you are running the car autonomously. 
 
-7. Mount the 850mAh battery in the RC car. Note that the standard plug on the 850mAh battery can be attached in either orientation, so *be careful* to plug it in in the right orientation (red-to-red and black-to-black wire). Add AA batteries to the remote control.
-8. Spend 5min playing around with the car (in the hallway or outside). Try to get a feel for how slow/fast it can drive forwards/backwards/turn, accelerations, etc. Record a video to show what you have tried, and discuss what you observe. This will help you establish a baseline for what you expect to see if everything works when you are running the car autonomously. 
-9. Finally, using tape/zip ties, mount the Artemis with battery and sensors onto the car, and try to record a stunt of your choosing (e.g. drive straight and do a couple of turns, do a flip, etc.). To demonstrate that your system works, please include both a video and a graph showing the data you collected during the stunt in your write-up. 
-   - If you run out of time during your lab/open lab hours, note that the laminate floor in most of Phillips Hall will work just as well for this task as the floor in PH427.
 
 #### Pack up
 
-9. Don't forget to disconnect your batteries from the robot.
+7. Don't forget to disconnect your batteries from the robot.
    - From this point onwards, always show up to the lab section with charged batteries. You can charge the 650mAh battery through USB using the Artemis board's built-in charger, and the 850mAh battery in one of the many chargers in the lab.
    - You can take one of the 850mAh batteries home with you. Please leave the rest in the lab for everyone to share.
    - *If you have used one of the shared 850mAh batteries, please plug it into the lab chargers before you leave!* 
-10. If you're done playing with your RC car, please also take out the AA batteries from the remote control and hand them back to the TAs so we can use them for following labs. Starting lab 5, we will no longer use the remote control.
+8. If you're done playing with your RC car, please also take out the AA batteries from the remote control and hand them back to the TAs so we can use them for following labs. Starting lab 5, we will no longer use the remote control.
 
 #### Additional Tasks for 5000-level students
 
@@ -129,9 +129,6 @@ This is not a strict requirement, but may be helpful in understanding what shoul
      * Speed of sampling discussion
      * Demonstrate collected and stored time-stamped IMU data in arrays
      * Demonstrate 5s of ToF and IMU data sent over Bluetooth
-   * Cut the Coord
-     * Discussion on battery distinction
-     * Picture of your Artemis connected to the 650mAh battery
    * Record a Stunt
       * Include a video (or some videos) of you playing with the car and discuss your observations
         * Without Artemis
