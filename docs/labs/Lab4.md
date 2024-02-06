@@ -11,10 +11,6 @@ The purpose of this lab is to add the IMU to your robot, start running the Artem
 * 1 x [SparkFun RedBoard Artemis Nano](https://www.sparkfun.com/products/15443)
 * 1 x [USB cable](https://www.amazon.com/SUMPK-Charging-Braided-Compatible-Samsung/dp/B08R68T84N/ref=sr_1_4?keywords=usb+c+to+c&qid=1636380583&qsid=147-6677549-1776715&refinements=p_n_feature_ten_browse-bin%3A23555327011&rnid=23555276011&s=pc&sr=1-4&sres=B08D9SB161%2CB08R68T84N%2CB01CZVEUIE%2CB01FM51812%2CB07VCZV3R4%2CB075V68NVR%2CB075GMKZWW%2CB093BVBRJT%2CB09BBBJ33F%2CB09C2D9Z7T%2CB012V56D2A%2CB092CYFQMP%2CB081L4V3DN%2CB07Y6ZJT1D%2CB07Y2XKPX5%2CB07VPYJV8V%2CB07THJGZ9Z%2CB08W2TP2TT%2CB0744BKDRD%2CB07THFJ1J5&srpt=ELECTRONIC_CABLE)
 * 1 x [9DOF IMU sensor](https://www.mouser.com/ProductDetail/SparkFun/SEN-15335?qs=uwxL4vQweFMcls1MYZT00A%3D%3D)
-* 2 x [4m ToF sensor](https://www.pololu.com/product/3415)
-* 1 x [QWIIC Breakout board](https://www.sparkfun.com/products/18012) 
-* 2 x [Qwiic connector](https://www.sparkfun.com/products/14426)
-* 1 x [JST2 connector+cable](https://www.amazon.com/dp/B07V56N33J?smid=A2ZDGCOOU4F0SF&ref_=chk_typ_imgToDp&th=1)
 * 1 x [Force1 RC car](https://force1rc.com/products/cyclone-remote-control-car-for-kids-adults)
 * 1 x [Li-Ion 3.7V 850mAh battery](https://www.amazon.com/URGENEX-Battery-Rechargeable-Quadcopter-Charger/dp/B08T9FB56F/ref=sr_1_3?keywords=lipo+battery+3.7V+850mah&qid=1639066404&sr=8-3))
 
@@ -74,6 +70,7 @@ Finally, please skim the lab instructions so you are ready to hit the road when 
 
 4. Demonstrate that your board can capture at least 5s worth of ToF data and IMU data and send it over Bluetooth to the computer.
   
+<!---
 #### Cut the Coord!
 
 5. Unplug the USB C cable from the Artemis, and connect a battery instead. You have two batteries available. One is 3.7V 850mAh, you will use this one to power the motors through the motor drivers. The other is 3.7V 650mAh and comes with the RC car, you will use this one to power the digital electronics (Artemis, sensors, etc.).
@@ -82,6 +79,7 @@ Finally, please skim the lab instructions so you are ready to hit the road when 
    - Triple check that the JST connector is oriented correctly. Does the red wire connect to the "+" on the board?
    - Connect the power and ensure that the board still runs. Do you still receive Bluetooth data? If not, do you still see the visual indication/LED blinking you set up above? (This should help you debug where potential errors are located)
 <img src="../Figs/Battery.png" width="600">
+-->
 
 
 #### Record a stunt!
@@ -93,7 +91,7 @@ Finally, please skim the lab instructions so you are ready to hit the road when 
 
 #### Pack up
 
-9. Don't forget to disconnect your batteries from both the Artemis and the robot.
+9. Don't forget to disconnect your batteries from the robot.
    - From this point onwards, always show up to the lab section with charged batteries. You can charge the 650mAh battery through USB using the Artemis board's built-in charger, and the 850mAh battery in one of the many chargers in the lab.
    - You can take one of the 850mAh batteries home with you. Please leave the rest in the lab for everyone to share.
    - *If you have used one of the shared 850mAh batteries, please plug it into the lab chargers before you leave!* 
