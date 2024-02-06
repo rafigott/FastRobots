@@ -2,7 +2,7 @@
 
 [Return to main page](index.md)
 
-# Lab 4: IMU
+# Lab 2: IMU
 
 ## Objective
 The purpose of this lab is to add the IMU to your robot, start running the Artemis+sensors from a battery, and record a stunt on your RC robot. 
@@ -22,7 +22,7 @@ The purpose of this lab is to add the IMU to your robot, start running the Artem
 
 Please read up on the IMU. This year, we're using the [Sparkfun](https://www.sparkfun.com/products/15335) breakout board, their information gives a nice quick overview of the functionality, and their [software library](https://github.com/sparkfun/SparkFun_ICM-20948_ArduinoLibrary) works well. The ICM-20948 datasheet can be found [here](https://cdn.sparkfun.com/assets/7/f/e/c/d/DS-000189-ICM-20948-v1.3.pdf). 
 
-<img src="./Figs/ICM-20948_datasheet.png" width="600">
+<img src="../Figs/ICM-20948_datasheet.png" width="600">
 
 Finally, please skim the lab instructions so you are ready to hit the road when your section starts. This lab is extensive, so be prepared to put in the hours.
 
@@ -81,7 +81,7 @@ Finally, please skim the lab instructions so you are ready to hit the road when 
    - Solder the cables from 650mAh battery to the JST connector as shown in the image below. Be *careful* not to short the battery leads when you do this. Cut, solder, and add heat shrink to one wire at a time. 
    - Triple check that the JST connector is oriented correctly. Does the red wire connect to the "+" on the board?
    - Connect the power and ensure that the board still runs. Do you still receive Bluetooth data? If not, do you still see the visual indication/LED blinking you set up above? (This should help you debug where potential errors are located)
-<img src="./Figs/Battery.png" width="600">
+<img src="../Figs/Battery.png" width="600">
 
 
 #### Record a stunt!
