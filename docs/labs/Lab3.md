@@ -41,7 +41,7 @@ While you can choose to ignore the robot in this lab, you will have to permanent
    - You will have to cut one end of a QWIIC cable and solder the other to your sensor. You have two long cables and two short ones, choose wisely. 
    - Think about which color attaches to SDA/SCL?
    - The photo below is an example of a sensor with a cable. Note that the protective film has not yet been removed.
-   <p align="center"><img src="./Figs/ToFsensor.jpg" width="700"></p>
+   <p align="center"><img src="../Figs/ToFsensor.jpg" width="700"></p>
 
 4. Scan the I2C channel to find the sensor
    - Go to File->Examples->Apollo3->Wire and open Example1_wire_I2C
@@ -58,7 +58,7 @@ While you can choose to ignore the robot in this lab, you will have to permanent
    - Use the "..\Arduino\libraries\SparkFun_VL53L1X_4m_Laser_Distance_Sensor\examples\Example1_ReadDistance" example
    - Document your ToF sensor range, accuracy, repeatability, and ranging time
    - The figure below is an example from 2020, when students measured the accuracy and repeatability in different lighting conditions, and timing for various code setups (these are not all required tasks for this year), however, we highly recommend generating your plots in the Jupyter notebook to gain more familiarity with the environment, e.g. using [matplotlib](https://matplotlib.org/).    
-   <p align="center"><img src="./Figs/ToF_characterization.png" width="700"></p>
+   <p align="center"><img src="../Figs/ToF_characterization.png" width="700"></p>
 
 7. Using notes from the pre-lab, hook up both ToF sensors simultaneously and demonstrate that both works. 
    - Fyi, don't use the Example1_wire code to do this, it works poorly when multiple sensors are attached.  
