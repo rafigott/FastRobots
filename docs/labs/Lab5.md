@@ -23,6 +23,8 @@ The purpose of this lab is for you to change from manual to open loop control of
 
 ## Prelab
 
+If you have never used and osciloiscope before, or would like a refresher, please watch [this](https://youtu.be/lGk9z258NE0) tutorial by Dr. Kirstin Petersen for reference. 
+
 Check out the [documentation](https://www.pololu.com/product-info-merged/2130) and the [datasheet](https://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=https%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fdrv8833) for the dual motor driver. 
 
 Note that to deliver enough current for our robot to be fast, we will parallel-couple the two inputs and outputs on each dual motor driver, essentially using two channels to drive each motor. This means that we can deliver twice the average current without overheating the chip. While it is a bad idea to parallel couple motor drivers from separate ICs because their timing might differ slightly, you can often do it when both motor drivers exist on the same chip with the same clock circuitry.  
