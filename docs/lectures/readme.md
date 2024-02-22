@@ -13,9 +13,9 @@ Lecture slides will be uploaded on this page. Recorded lectures are available vi
 * [Lecture 7 - PID control](./FastRobots-7-PID(2022).pdf) ''
 * [Lecture 8 - PID control, continued](./FastRobots-8-PID_continued.pdf), [worksheet](https://bit.ly/3LIAxae)
 * [Lecture 9 - Linear systems, recap](./FastRobots-9-LinearSystems.pdf)
-<!--
 * [Lecture 10 - Controllability](./FastRobots-10-Controllability.pdf)
 * [Lecture 11 - Controllability/LQR](.FastRobots-11-Controllability(continued).pdf)
+<!--
 * [Lecture 12 - Probability and Bayes Theorem](./FastRobots-12-Probability_BayesTheorem.pdf)
 * [Lecture 13 - Observability and Kalman Filters](./FastRobots-13-KF)
 * [Lecture 14 - Local Planning and Map Representations](./FastRobots-14-LocalPlanning_and_Maps.pdf)
