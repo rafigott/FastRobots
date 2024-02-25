@@ -2,141 +2,101 @@
 
 [Return to main page](index.md)
 
-# Lab 2: IMU
+# Lab 4: Motors and Open Loop Control
 
 ## Objective
-The purpose of this lab is to add the IMU to your robot, start running the Artemis+sensors from a battery, and record a stunt on your RC robot. 
+
+The purpose of this lab is for you to change from manual to open loop control of the car. At the end of this lab, your car should be able to execute a pre-programmed series of moves, using the Artemis board and two dual motor drivers. 
 
 ## Parts Required
+
 * 1 x [SparkFun RedBoard Artemis Nano](https://www.sparkfun.com/products/15443)
 * 1 x [USB cable](https://www.amazon.com/SUMPK-Charging-Braided-Compatible-Samsung/dp/B08R68T84N/ref=sr_1_4?keywords=usb+c+to+c&qid=1636380583&qsid=147-6677549-1776715&refinements=p_n_feature_ten_browse-bin%3A23555327011&rnid=23555276011&s=pc&sr=1-4&sres=B08D9SB161%2CB08R68T84N%2CB01CZVEUIE%2CB01FM51812%2CB07VCZV3R4%2CB075V68NVR%2CB075GMKZWW%2CB093BVBRJT%2CB09BBBJ33F%2CB09C2D9Z7T%2CB012V56D2A%2CB092CYFQMP%2CB081L4V3DN%2CB07Y6ZJT1D%2CB07Y2XKPX5%2CB07VPYJV8V%2CB07THJGZ9Z%2CB08W2TP2TT%2CB0744BKDRD%2CB07THFJ1J5&srpt=ELECTRONIC_CABLE)
 * 1 x [9DOF IMU sensor](https://www.mouser.com/ProductDetail/SparkFun/SEN-15335?qs=uwxL4vQweFMcls1MYZT00A%3D%3D)
+* 2 x [4m ToF sensor](https://www.pololu.com/product/3415)
+* 1 x [QWIIC Breakout board](https://www.sparkfun.com/products/18012) 
+* 2 x [Qwiic connector](https://www.sparkfun.com/products/14426)
+* 1 x [JST2 connector+cable](https://www.amazon.com/dp/B07V56N33J?smid=A2ZDGCOOU4F0SF&ref_=chk_typ_imgToDp&th=1)
 * 1 x [Force1 RC car](https://force1rc.com/products/cyclone-remote-control-car-for-kids-adults)
-* 1 x [Li-Ion 3.7V 850mAh battery](https://www.amazon.com/URGENEX-Battery-Rechargeable-Quadcopter-Charger/dp/B08T9FB56F/ref=sr_1_3?keywords=lipo+battery+3.7V+850mah&qid=1639066404&sr=8-3))
+* 1 x [Li-Ion 3.7V 850mAh battery](https://www.amazon.com/URGENEX-Battery-Rechargeable-Quadcopter-Charger/dp/B08T9FB56F/ref=sr_1_3?keywords=lipo+battery+3.7V+850mah&qid=1639066404&sr=8-3)
+* 2 x [Dual motor drivers](https://www.digikey.com/en/products/detail/pololu-corporation/2130/10450426)
 
-### Prelab
+## Prelab
 
-Please read up on the IMU. This year, we're using the [Sparkfun](https://www.sparkfun.com/products/15335) breakout board, their information gives a nice quick overview of the functionality, and their [software library](https://github.com/sparkfun/SparkFun_ICM-20948_ArduinoLibrary) works well. The ICM-20948 datasheet can be found [here](https://cdn.sparkfun.com/assets/7/f/e/c/d/DS-000189-ICM-20948-v1.3.pdf). 
+If you have never used and osciloiscope before, or would like a refresher, please watch [this](https://youtu.be/lGk9z258NE0) tutorial by Dr. Kirstin Petersen for reference. 
 
-<img src="../Figs/ICM-20948_datasheet.png" width="600">
+Check out the [documentation](https://www.pololu.com/product-info-merged/2130) and the [datasheet](https://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=https%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fdrv8833) for the dual motor driver. 
 
-Finally, please skim the lab instructions so you are ready to hit the road when your section starts. This lab is extensive, so be prepared to put in the hours.
+Note that to deliver enough current for our robot to be fast, we will parallel-couple the two inputs and outputs on each dual motor driver, essentially using two channels to drive each motor. This means that we can deliver twice the average current without overheating the chip. While it is a bad idea to parallel couple motor drivers from separate ICs because their timing might differ slightly, you can often do it when both motor drivers exist on the same chip with the same clock circuitry.  
+In your lab write-up, discuss/show how you decide to hook up/place the motor drivers. 
+* What pins will you use for control on the Artemis? (It is worth considering both [pin functionality](https://cdn.sparkfun.com/assets/5/5/1/6/3/RedBoard-Artemis-Nano.pdf) and physical placement on the board/car).
+* We ask you to power the Artemis and the motor drivers/motors from separate batteries. Why is that? 
+* Consider routing paths given EMI, wire lengths, and color coding. Long wires may not fit in the chassis, and lead to unnecessary noise. Wires that are too short, will make repair harder. Using solid-core wire can cause problems when the car undergoes high accelerations. 
+* As always, skim all the instructions for the lab before you show up to your section!
 
-### Instructions
+## Instructions
 
-### Prep the RC car
-
-1. Start charging the battery for the RC car, using the USB charger that comes with it. 
- 
-#### Setup the IMU
-
-1. Using the Arduino library manager, install the SparkFun 9DOF IMU Breakout - ICM 20948 - Arduino Library.
-2. Connect the IMU to the Artemis board using the QWIIC connectors/cable.
-3. Run the "..\Arduino\libraries\SparkFun_ICM-20948\SparkFun_ICM-20948_ArduinoLibrary-master\examples\Arduino\Example1_Basics". 
-   - Note the AD0_VAL definition. What does it represent, and should it be 0 or 1?
-   - Check out the change in sensor values as you rotate, flip, and accelerate the board. Explain what you see in both acceleration and gyroscope data.
-4. Add a visual indication that the board is running - for example, blink the LED three times slowly on start-up. This will be handy later in the lab.
-
-#### Accelerometer
-
-1. Use the equations from class to convert accelerometer data into pitch and roll. To use atan2 and M_PI, you have to include the math.h library. 
-   - Show the output at {-90, 0, 90} degrees pitch and roll. Hint: You can use the surface and edges of your table as guides to ensure 90 degree tilt/roll.  
-   - How accurate is your accelerometer? You may want to do a two-point calibration (i.e. measure the output at either end of the range, and calculate the conversion factor such that the final output matches the expected output). 
-2. The accelerometer is noisy, especially when you run the RC car in its proximity. Record some of this data, and analyze the noise in the frequency spectrum. 
-   - Here's a helpful tutorial to do a [Fourier Transform in Python](https://alphabold.com/fourier-transform-in-python-vibration-analysis/)
-   - Use this analysis to guide your choice of a complimentary low pass filter cut off frequency (recall implementation details from the [lecture](./lectures/FastRobots-4-IMU.pdf). Discuss how the choice of cut off frequency affects the output.
-   - If there's little noise, check out the information on the chip and reason about why that might be. (Note, this may differ between kits)
-3. Include a graph of Fourier Transform of your accelerometer data. Reason about what a good cutoff frequency is. 
-   - Think about the sample rate of your accelerometer.
-   - Try inducing vibrational noice by setting your IMU on the lable and hitting the table (gently) with your hand or a text book. (Just enough to vibrate the table)
-4. Implement a simple lowpass filter on your accelerometer data.
-   - Demonstrate (graph) the original signal vs the low pass filter. 
+1. Connect the necessary power and signal inputs to one dual motor driver (where inputs/outputs are hooked up in parallel as discussed in lecture) from the Artemis. 
+   - For now, keep the motor driver (VIN) powered from an external power supply with a controllable current limit; this will make debugging easier. 
+   - What are reasonable settings for the power supply? 
    
-#### Gyroscope
+2. Use analogWrite commands to generate PWM signals and show (using an oscilloscope) that you can regulate the power on the motor driver output. 
 
-1. Use the equations from class to compute pitch, roll, and yaw angles from the gyroscope. 
-   - Compare your output to the pitch, roll, and yaw values from the accelerometer and the filtered response. Describe how they differ.
-   - Try adjusting the sampling frequency to see how it changes the accuracy of your estimated angles.
-2. Use a complimentary filter to compute an estimate of pitch and roll which is both accurate and stable. Demonstrate its working range and accuracy, and that it is not susceptible to drift or quick vibrations.
+3. Take your car apart!
+   - Unscrew and remove the top (blue) shell from your car. You may have to cut the wires for the chassis LEDs (we will not be using them in this class). *Don't loose the screws!!*
+   - Locate and unmount the control PCB and cut wires to the motors and the battery connector as close to the board as possible.
 
-#### Sample Data
+4. Place your car on its side, such that the spinning wheels are elevated, and show that you can run the motor in both directions. 
+   - Keep the motor driver powered on an external power supply for now, but remember to connect all grounds in your circuit. 
 
-1. Speed up execution of the main loop
-   - Make sure you don't wait for IMU data to be ready to move through the loop - instead just check if data is ready in every iteration of the main loop. If ready - store it in your array. 
-   - Remove any delays you've inserted for debugging
-   - Serial.print statements are a significant source of delays, be sure to comment all of these out 
-   - How quickly are you able to sample new values?
-   - Does your main loop on the Artemis run faster than the IMU produces new values?
+5. Power the motor driver from the 850mAh battery instead of the power supply (double check color codes before you plug it in), and make sure your code works when the circuit is fully battery powered. 
 
-2. Similar to Lab 1, collect and store time-stamped IMU data in arrays. Do this in your main loop using flags to start/stop data recording. 
+6. Repeat the process for the second motor and motor driver. One 850mAh battery should be enough to power both motors. 
 
-3. Think about how you store your data:
-   - Consider if it makes sense to have one big array, or separate arrays for storing ToF, Accelerometer, and Gyroscope data, argue for your choice
-   - Consider the best data type to store your data. Should you use string, floats, double, integers? Justify your decision.
-   - Consider the memory of the Artemis; how much memory can you allocate to your arrays? What does that correspond to in seconds?
+7. Install everything inside your car chassis, and try running the car on the ground. 
+   - Remember, the car may flip, so try to avoid having components that stick out beyond the wheels.
+   - Also, the car is very fast, so test it in the hallway and add a timer in code so that it stops automatically after a short amount of time. That way you don't have to try to catch it when it gets away from you!
+   - Here is an example of a car with everything hooked up (note that we did not use QWIIC connectors in this one). Remember that the implementation details are entirely up to you.
+   <p align="center"><img src="../Figs/MotorDriver.jpg" width="400"></p>
 
-4. Demonstrate that your board can capture at least 5s worth of IMU data and send it over Bluetooth to the computer.
-  
-<!---
-#### Cut the Coord!
+8. Explore the lower limit in PWM value for which the robot moves forward and on-axis turns while on the ground; note it may require slightly more power to start from rest compared to when it is running. 
 
-5. Unplug the USB C cable from the Artemis, and connect a battery instead. You have two batteries available. One is 3.7V 850mAh, you will use this one to power the motors through the motor drivers. The other is 3.7V 650mAh and comes with the RC car, you will use this one to power the digital electronics (Artemis, sensors, etc.).
-   - Consider why we are asking you to use the battery with more capacity to drive the motors. 
-   - Solder the cables from 650mAh battery to the JST connector as shown in the image below. Be *careful* not to short the battery leads when you do this. Cut, solder, and add heat shrink to one wire at a time. 
-   - Triple check that the JST connector is oriented correctly. Does the red wire connect to the "+" on the board?
-   - Connect the power and ensure that the board still runs. Do you still receive Bluetooth data? If not, do you still see the visual indication/LED blinking you set up above? (This should help you debug where potential errors are located)
-<img src="../Figs/Battery.png" width="600">
--->
+9. If your motors do not spin at the same rate, you will need to implement a calibration factor. To demonstrate that your robot can move in a fairly straight line, record a video of your robot following a straight line (e.g. a piece of tape) for at least 2m/6ft. 
+   - It may be helpful to note that each of the vinyl tiles in the lab is 1-by-1 foot. 
+   - The robot should start centered on the line, and still partially overlap with the line at the end. 
 
-### Record a stunt!
+10. Demonstrate open loop, untethered control of your robot - add in some turns. 
 
-5. Mount the 850mAh battery in the RC car. Note that the standard plug on the 850mAh battery can be attached in either orientation, so *be careful* to plug it in in the right orientation (red-to-red and black-to-black wire). Add AA batteries to the remote control.
-6. Spend 5min playing around with the car (in the hallway or outside). Try to get a feel for how slow/fast it can drive forwards/backwards/turn, accelerations, etc. Record a video to show what you have tried, and discuss what you observe. This will help you establish a baseline for what you expect to see if everything works when you are running the car autonomously. 
+## Additional tasks for 5000-level students
 
+1. Consider what frequency analogWrite generates. Is this adequately fast for these motors? Can you think of any benefits to manually configuring the timers to generate a faster PWM signal?
 
-#### Pack up
-
-7. Don't forget to disconnect your batteries from the robot.
-   - From this point onwards, always show up to the lab section with charged batteries. You can charge the 650mAh battery through USB using the Artemis board's built-in charger, and the 850mAh battery in one of the many chargers in the lab.
-   - You can take one of the 850mAh batteries home with you. Please leave the rest in the lab for everyone to share.
-   - *If you have used one of the shared 850mAh batteries, please plug it into the lab chargers before you leave!* 
-8. If you're done playing with your RC car, please also take out the AA batteries from the remote control and hand them back to the TAs so we can use them for following labs. Starting lab 5, we will no longer use the remote control.
-
-#### Additional Tasks for 5000-level students
-
-You're off the hook in this lab!
-
----
+2. Relating to task 8 above, try to (experimentally) figure out not just at what PWM value the robot starts moving (forward and on-axis turns), but also the lowest PWM value at which you can keep the robot running once it is in motion. How quickly can you have the robot settle at its slowest speed? (First program a value that overcomes static friction and gets the robot moving, then a value that keeps it moving as slowly as possible.)
 
 ## Write-up
 
-Word Limit: < 1000 words
+Word Limit: < 800 words
 
 **Webpage Sections**
+
 This is not a strict requirement, but may be helpful in understanding what should be included in your webpage. It also helps with the flow of your report to show your understanding to the lab graders.
 
-1. Lab Tasks
-   * Set up the IMU
-     * Picture of your Artemis IMU connections
-     * Show that the IMU example code works
-     * AD0_VAL definition discussion
-     * Acceleration and gyroscope data discussion (pictures recommended)
-   * Accelerometer
-     * Image of output at {-90, 0, 90} degrees for pitch and roll (include equations)
-     * Accelerometer accuracy discussion
-     * Noise in the frequency spectrum analysis
-       * Include graphs for your fourier transform
-       * Discuss the results
-   * Gyroscope
-     * Include documentation for pitch, roll, and yaw with images of the results of different IMU positions
-     * Demonstrate the accuracy and range of the complementary filter, and discuss any design choices
-   * Sample Data
-     * Speed of sampling discussion
-     * Demonstrate collected and stored time-stamped IMU data in arrays
-     * Demonstrate 5s of ToF and IMU data sent over Bluetooth
-   * Record a Stunt
-      * Include a video (or some videos) of you playing with the car and discuss your observations
-        * Without Artemis
-        * With Artemis, and plot data sent over Bluetooth
+1. Prelab
+   * Diagram with your intended connections between the motor drivers, Artemis, and battery (with specific pin numbers)
+   * Battery discussion
+2. Lab Tasks
+   * Picture of your setup with power supply and oscilloscope hookup
+   * Power supply setting discussion
+   * Include the code snippet for your analogWrite code that tests the motor drivers
+   * Image of your oscilloscope
+   * Short video of wheels spinning as expected (including code snippet it's running on)
+   * Short video of both wheels spinning (with battery driving the motor drivers)
+   * Picture of all the components secured in the car
+     * Consider labeling your picture if you can't see all the components
+   * Lower limit PWM value discussion
+   * Calibration demonstration (discussion, video, code, pictures as needed)
+   * Open loop code and video
+   * (5000) analogWrite frequency discussion (include screenshots and code)
+   * (5000) Lowest PWM value speed (once in motion) discussion (include videos where appropriate)
 
 Add code (consider using [GitHub Gists](https://gist.github.com)) where you think is relevant (DO NOT paste your entire code).

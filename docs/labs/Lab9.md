@@ -29,7 +29,6 @@ You can complete your control in either one of the following ways. If your contr
    - You can maximally score 5 points in this lab if you decide to do open loop control. 
 
 2. _Orientation control:_ Create a PID controller that allows your robot to do on-axis turns in small, accurate increments. 
-   - If you completed Task B Orientation Control in [lab 6](Lab6.md) this is likely the easiest solution. 
    - This option may also be best if you cannot get your robot to do slow reliable turns. Recall that the ToF sensor will report false outputs if the distance to the object changes too drastically during a reading -- a stationary robot can guarantee that the ToF sensor is pointing towards a fixed point in space.
    - Please quantify and/or use graphs to document that your PID controller works well, and upload a video that shows if your robot turns (roughly) on axis. 
    - Given the drift in your sensor, the size and accuracy of your increments, and how reliably your robot turns on axis, reason about the average and maximum error of your map if you were to do an on-axis turn in the middle of a 4x4m square, empty room. 
