@@ -2,101 +2,99 @@
 
 [Return to main page](index.md)
 
-# Lab 5: Motors and Open Loop Control
+# Lab 5: Linear PID control and Linear interpolation
 
 ## Objective
+The purpose of this lab is to get experience with PID control. The lab is fairly open ended, you can pick whatever controller works best for your system. 4000-level students can choose between P, PI, PID, PD; 5000-level students can choose between PI and PID controllers. Your hand-in will be judged upon your demonstrated understanding of PID control and practical implementation constraints, and the quality of your solution. 
 
-The purpose of this lab is for you to change from manual to open loop control of the car. At the end of this lab, your car should be able to execute a pre-programmed series of moves, using the Artemis board and two dual motor drivers. 
+This lab is part of a series of labs (5-8) on PID control, sensor fusion, and stunts. 
+This week you will do position control.
 
 ## Parts Required
-
+* 1 x [R/C stunt car](https://force1rc.com/products/cyclone-remote-control-car-for-kids-adults)
 * 1 x [SparkFun RedBoard Artemis Nano](https://www.sparkfun.com/products/15443)
 * 1 x [USB cable](https://www.amazon.com/SUMPK-Charging-Braided-Compatible-Samsung/dp/B08R68T84N/ref=sr_1_4?keywords=usb+c+to+c&qid=1636380583&qsid=147-6677549-1776715&refinements=p_n_feature_ten_browse-bin%3A23555327011&rnid=23555276011&s=pc&sr=1-4&sres=B08D9SB161%2CB08R68T84N%2CB01CZVEUIE%2CB01FM51812%2CB07VCZV3R4%2CB075V68NVR%2CB075GMKZWW%2CB093BVBRJT%2CB09BBBJ33F%2CB09C2D9Z7T%2CB012V56D2A%2CB092CYFQMP%2CB081L4V3DN%2CB07Y6ZJT1D%2CB07Y2XKPX5%2CB07VPYJV8V%2CB07THJGZ9Z%2CB08W2TP2TT%2CB0744BKDRD%2CB07THFJ1J5&srpt=ELECTRONIC_CABLE)
-* 1 x [9DOF IMU sensor](https://www.mouser.com/ProductDetail/SparkFun/SEN-15335?qs=uwxL4vQweFMcls1MYZT00A%3D%3D)
+* 2 x [Li-Po 3.7V 650mAh (or more) battery](https://www.amazon.com/URGENEX-Battery-Rechargeable-Quadcopter-Charger/dp/B08T9FB56F/ref=sr_1_3?keywords=lipo+battery+3.7V+850mah&qid=1639066404&sr=8-3)
+* 2 x [Dual motor driver](https://www.digikey.com/en/products/detail/pololu-corporation/2130/10450426)
 * 2 x [4m ToF sensor](https://www.pololu.com/product/3415)
-* 1 x [QWIIC Breakout board](https://www.sparkfun.com/products/18012) 
-* 2 x [Qwiic connector](https://www.sparkfun.com/products/14426)
-* 1 x [JST2 connector+cable](https://www.amazon.com/dp/B07V56N33J?smid=A2ZDGCOOU4F0SF&ref_=chk_typ_imgToDp&th=1)
-* 1 x [Force1 RC car](https://force1rc.com/products/cyclone-remote-control-car-for-kids-adults)
-* 1 x [Li-Ion 3.7V 850mAh battery](https://www.amazon.com/URGENEX-Battery-Rechargeable-Quadcopter-Charger/dp/B08T9FB56F/ref=sr_1_3?keywords=lipo+battery+3.7V+850mah&qid=1639066404&sr=8-3)
-* 2 x [Dual motor drivers](https://www.digikey.com/en/products/detail/pololu-corporation/2130/10450426)
+* 1 x [9DOF IMU sensor](https://www.digikey.com/en/products/detail/pimoroni-ltd/PIM448/10246391)
+* 1 x [Qwiic connector](https://www.sparkfun.com/products/14426)
 
-## Prelab
+## Prelab / BLE 
 
-If you have never used and osciloiscope before, or would like a refresher, please watch [this](https://youtu.be/lGk9z258NE0) tutorial by Dr. Kirstin Petersen for reference. 
+No matter which task you take on, it will be essential that you first setup a good system for _debugging_. 
 
-Check out the [documentation](https://www.pololu.com/product-info-merged/2130) and the [datasheet](https://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=https%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fdrv8833) for the dual motor driver. 
+**Please attempt to implement this before your lab session. Feel free to discuss the best strategy with your team mate.**
 
-Note that to deliver enough current for our robot to be fast, we will parallel-couple the two inputs and outputs on each dual motor driver, essentially using two channels to drive each motor. This means that we can deliver twice the average current without overheating the chip. While it is a bad idea to parallel couple motor drivers from separate ICs because their timing might differ slightly, you can often do it when both motor drivers exist on the same chip with the same clock circuitry.  
-In your lab write-up, discuss/show how you decide to hook up/place the motor drivers. 
-* What pins will you use for control on the Artemis? (It is worth considering both [pin functionality](https://cdn.sparkfun.com/assets/5/5/1/6/3/RedBoard-Artemis-Nano.pdf) and physical placement on the board/car).
-* We ask you to power the Artemis and the motor drivers/motors from separate batteries. Why is that? 
-* Consider routing paths given EMI, wire lengths, and color coding. Long wires may not fit in the chassis, and lead to unnecessary noise. Wires that are too short, will make repair harder. Using solid-core wire can cause problems when the car undergoes high accelerations. 
-* As always, skim all the instructions for the lab before you show up to your section!
+A good technique will be to: 
+1. Have the robot controller start on an input from your computer sent over Bluetooth
+2. Execute PID control over a fixed amount of time (e.g. 5s) while storing debugging data in arrays.
+   - Remember to have a hard stop implemented directly on your Artemis, so that your robot will stop even if the Bluetooth connection fails.
+4. Upon completion of the behavior, send the debugging data back to the computer over Bluetooth. 
 
-## Instructions
+Debugging data may for example include sensor data with time stamps similar to what you implemented in lab 2-3, output from the individual branches of your PID controller, and/or the input that you are sending to your motors. Remember, however, the storage cannot exceed the internal RAM of 384kB.  If you plan to do a lot of tweaking of your gains, you can also consider writing a Bluetooth command that lets you update the gains without having to reprogram the Artemis. 
 
-1. Connect the necessary power and signal inputs to one dual motor driver (where inputs/outputs are hooked up in parallel as discussed in lecture) from the Artemis. 
-   - For now, keep the motor driver (VIN) powered from an external power supply with a controllable current limit; this will make debugging easier. 
-   - What are reasonable settings for the power supply? 
+
+## Lab Procedure
+
+### Position Control
+
+For this task, you will have your robot drive as fast as possible (given the quality of your controller) towards a wall, then stop when it is exactly 1ft (=304mm=1 floor tile in the lab) away from the wall using feedback from the time of flight sensor. Your solution should be robust to changing conditions, such as the starting distance from the wall (2-4m). If you attempt to do this at home, you could also show that your solution is robust to changing floor surface, e.g. linoleum or carpet. The catch is that any overshoot or processing delay may lead to crashing into the wall.
+
+Beyond the considerations mentioned above, think about the following:
+   - Given the range of motor input values and the output from your TOF sensor, discuss what a reasonable range of the proportional controller gain will be. 
+   - Consider the range and sampling time you choose for your TOF sensor; it may be worth lowering the accuracy for faster updates. Note that the medium range is only available if you are using the ([ToF Pololu library](https://github.com/pololu/vl53l0x-arduino)). 
+   - Also note that the sensor has a programmable integration time. If this is set too high, you will see large jumps in your data as the robot drives and you can no longer assume that the measurements are independent. You can lower the integration time (trading off accuracy for speed) using: `proximitySensor.setProxIntegrationTime(4); //A value of 1 to 8 is valid`. Again this function is only available in the [Tof Pololu library](https://github.com/pololu/vl53l0x-arduino).
+
+Below you can see an example of a simple PI controller acting on the TOF signal.
+
+**Tips and tricks:**
+   - _LOG DATA:_ If you don't want to repeat work during Lab 7, be sure to log all data (time stamped sensor values and motor outputs), as well as setup variables from at least one successful run. Even if you are doing orientation control, be sure to log ToF data as you speed towards the wall as well. 
+   - _Lectures:_ Brush up on your PID control skills by checking out [Lectures 7 and 8](https://cei-lab.github.io/FastRobots-2023/lectures/).
+   - _PID library:_ There exists an [Arduino PID library](https://playground.arduino.cc/Code/PIDLibrary/). You are welcome to use this library if you prefer, but we will only offer limited TA support if you run into issues. Implementing a basic PID controller from scratch is easy (<10 lines of code), and will give you more freedom in dealing with noise, wind-up, and system non-linearities. 
+   - _Start simple:_ E.g. with a proportional controller running at low speeds and a generous setpoint, then you can work your way up to faster speeds, more advanced control, and more difficult setpoints if you have time. 
+   - _Documentation:_ Please clearly document the maximum linear or angular speed you are able to achieve (you can use your sensors to compute this). To demonstrate reliability, please upload videos of at least three repeated (and hopefully successfull) experiments.  
+   - _Frequency:_ Fast loop times means everything to a good controller. Be sure to include a discussion of sensor sampling rate and how this affects the timing of your control loop. Avoid using blocking statements when you can (e.g. `delay()` or `while(sensor not ready) ){wait}` ). Also, remember that any serial.print/BLE sending that occurs during execution may slow down your loop time considerably. 
+   - _Deadband:_ From Lab 5, you should have found the deadband of your motor (the region below which the power to the motors does not overcome the static friction in your system). Consider writing a scaling function that converts the output from your PID controller to an output for which the motors can actually react. 
+   - _Wind up:_ If you include an integrator, consider whether you need to worry about integrator wind-up. 
+   - _Derivative LPF:_ If you include a derivative, consider whether it is necessary to include a low pass filter in the derivative branch. 
+   - _Derivative kick:_ Consider whether the derivative kick can cause any issues, given the task you choose. Here is a great overview on how to eliminate derivative kick: http://brettbeauregard.com/blog/2011/04/improving-the-beginner’s-pid-derivative-kick/
+   - _Anything goes:_ The goal is a working system. When you have a reasonable control setup working, you should feel free to add any "hacks" that will improve your robot performance in a reliable way. If you don't have time to implement them, discussing what you imagine would help can still get you grading points. 
+   - _Motor drivers:_ Recall [Lecture 6 on Actuators](https://cei-lab.github.io/ECE4960-2022/lectures/FastRobots-6-Actuators.pdf) and that the motor drivers have both coasting and active breaking modes. These might come in handy.
+
+<img src="./Figs/Lab6_TaskA_PIcontrol_example.png" width="400">
+
+Corresponding videos are here: 
+
+[![Solution 1](https://img.youtube.com/vi/nhYkWK4wSiE/1.jpg)](https://youtu.be/nhYkWK4wSiE "Solution 1")      [![Solution 2](https://img.youtube.com/vi/mBxqnfi0VOE/1.jpg)](https://youtu.be/mBxqnfi0VOE "Solution 2").
+
+### Extrapolation
+
+In Lab 7, you will learn how the Kalman Filter works, you could implement this on your robot and use it to speed up sampling of the estimated distance-to-the-wall. However, getting the Kalman Filter to work in practice takes time. A simple but less accurate alternative is a data extrapolator. 
+
+Write a function to extrapolate new TOF values based on recent sensor values, such that you can drive your robot quickly towards the wall with high accuracy. Be sure to demonstrate that your solution works by uploading videos and by plotting corresponding raw and estimated data in the same graph. 
+
+## Tasks for 5000-level students
    
-2. Use analogWrite commands to generate PWM signals and show (using an oscilloscope) that you can regulate the power on the motor driver output. 
-
-3. Take your car apart!
-   - Unscrew and remove the top (blue) shell from your car. You may have to cut the wires for the chassis LEDs (we will not be using them in this class). *Don't loose the screws!!*
-   - Locate and unmount the control PCB and cut wires to the motors and the battery connector as close to the board as possible.
-
-4. Place your car on its side, such that the spinning wheels are elevated, and show that you can run the motor in both directions. 
-   - Keep the motor driver powered on an external power supply for now, but remember to connect all grounds in your circuit. 
-
-5. Power the motor driver from the 850mAh battery instead of the power supply (double check color codes before you plug it in), and make sure your code works when the circuit is fully battery powered. 
-
-6. Repeat the process for the second motor and motor driver. One 850mAh battery should be enough to power both motors. 
-
-7. Install everything inside your car chassis, and try running the car on the ground. 
-   - Remember, the car may flip, so try to avoid having components that stick out beyond the wheels.
-   - Also, the car is very fast, so test it in the hallway and add a timer in code so that it stops automatically after a short amount of time. That way you don't have to try to catch it when it gets away from you!
-   - Here is an example of a car with everything hooked up (note that we did not use QWIIC connectors in this one). Remember that the implementation details are entirely up to you.
-   <p align="center"><img src="../Figs/MotorDriver.jpg" width="400"></p>
-
-8. Explore the lower limit in PWM value for which the robot moves forward and on-axis turns while on the ground; note it may require slightly more power to start from rest compared to when it is running. 
-
-9. If your motors do not spin at the same rate, you will need to implement a calibration factor. To demonstrate that your robot can move in a fairly straight line, record a video of your robot following a straight line (e.g. a piece of tape) for at least 2m/6ft. 
-   - It may be helpful to note that each of the vinyl tiles in the lab is 1-by-1 foot. 
-   - The robot should start centered on the line, and still partially overlap with the line at the end. 
-
-10. Demonstrate open loop, untethered control of your robot - add in some turns. 
-
-## Additional tasks for 5000-level students
-
-1. Consider what frequency analogWrite generates. Is this adequately fast for these motors? Can you think of any benefits to manually configuring the timers to generate a faster PWM signal?
-
-2. Relating to task 8 above, try to (experimentally) figure out not just at what PWM value the robot starts moving (forward and on-axis turns), but also the lowest PWM value at which you can keep the robot running once it is in motion. How quickly can you have the robot settle at its slowest speed? (First program a value that overcomes static friction and gets the robot moving, then a value that keeps it moving as slowly as possible.)
+Implement wind-up protection for your integrator. Argue for why this is necessary (you may for example demonstrate how your controller works reasonably independent of floor surface). 
 
 ## Write-up
 
 Word Limit: < 800 words
-
+                 
 **Webpage Sections**
 
-This is not a strict requirement, but may be helpful in understanding what should be included in your webpage. It also helps with the flow of your report to show your understanding to the lab graders.
+This is not a strict requirement, but may be helpful in understanding what should be included in your webpage. It also helps with the flow of your report to show your understanding to the lab graders. *This lab is more open ended in terms of the steps taken to reach the end goal, so just make sure to document your process you take to complete your task, including testing and debugging steps!*
 
 1. Prelab
-   * Diagram with your intended connections between the motor drivers, Artemis, and battery (with specific pin numbers)
-   * Battery discussion
-2. Lab Tasks
-   * Picture of your setup with power supply and oscilloscope hookup
-   * Power supply setting discussion
-   * Include the code snippet for your analogWrite code that tests the motor drivers
-   * Image of your oscilloscope
-   * Short video of wheels spinning as expected (including code snippet it's running on)
-   * Short video of both wheels spinning (with battery driving the motor drivers)
-   * Picture of all the components secured in the car
-     * Consider labeling your picture if you can't see all the components
-   * Lower limit PWM value discussion
-   * Calibration demonstration (discussion, video, code, pictures as needed)
-   * Open loop code and video
-   * (5000) analogWrite frequency discussion (include screenshots and code)
-   * (5000) Lowest PWM value speed (once in motion) discussion (include videos where appropriate)
+   * Clearly describe how you handle sending and receiving data over Bluetooth
+   * Consider adding code snippets as necessary to showcase how you implemented this on Arduino and Python
 
+2. Lab Tasks
+   * P/I/D discussion (Kp/Ki/Kd values chosen, why you chose a combination of controllers, etc.)
+   * Range/Sampling time discussion
+   * Graphs, code, videos, images, discussion of reaching task goal 
+   * Graph data should include Tof vs time and Motor input vs time (and whatever helps with debugging)
+   * (5000) Wind-up implementation and discussion
+   
 Add code (consider using [GitHub Gists](https://gist.github.com)) where you think is relevant (DO NOT paste your entire code).
