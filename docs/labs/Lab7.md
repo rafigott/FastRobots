@@ -6,7 +6,7 @@
 
 ## Objective
 
-The objective of Lab 7 is to implement a Kalman Filter, which will help you execute the behavior you did in [Lab 6](Lab6.md) faster. The goal now is to use the Kalman Filter to supplement your slowly sampled ToF values, such that you can speed towards the wall as fast as possible, then either stop 1foot from the wall (if you chose Task A, position control) or turn within 2ft of the wall (if you chose Task B, orientation control). Note that part of the lab 8 grade is based on the speed of your solution.  
+The objective of Lab 7 is to implement a Kalman Filter, which will help you execute the behavior you did in [Lab 5](Lab5.md) faster. The goal now is to use the Kalman Filter to supplement your slowly sampled ToF values, such that you can speed towards the wall as fast as possible, then either stop 1ft from the wall or turn within 2ft  Note that part of the lab 8 grade is based on the speed of your solution.  
 
 ## Parts Required
 
@@ -59,7 +59,7 @@ To build the state space model for your system, you will need to estimate the dr
 ### 3. Implement and test your Kalman Filter in Jupyter
 
 1. To sanity check your parameters, implement your Kalman Filter in Jupyter first. You can do this using the function in the code below (for ease, variable names follow the convention from the [lecture slides](lectures/FastRobots-13-KF.pdf)). 
-   - Import timing, ToF, and PWM data from a straight run towards the wall (you should have this data handy from lab 6).  
+   - Import timing, ToF, and PWM data from a straight run towards the wall (you should have this data handy from lab 5).  
    - You may need to format your data first. For the Kalman Filter to work, you'll need all input arrays to be of equal length. That means that you might have to interpolate data if for example you have fewer ToF measurements than you have motor input updates. Numpy's linspace and interp commands can help you accomplish this. 
    - Loop through all of the data, while calling the Kalman Filter.
    - Remember to scale your input from 1 to the actual value of your step size (u/step_size).
@@ -82,18 +82,6 @@ def kf(mu,sigma,u,y):
 
     return mu,sigma
 ```
-
----
-
-**Note that due to the snow day, we have decided to make edits to the lab from this point forward. If you are low on time, consider doing task 4.A; if you are all caught up, consider doing 4.B instead for up to 4 bonus points.**
-
----
-
-### 4.A Extrapolation
-
-Now that you understand how the Kalman Filter works, you could implement this on your robot and use it to speed up sampling of the estimated distance-to-the-wall (Task 4.B). However, getting the Kalman Filter to work in practice takes time. If you are low on time, do extrapolation instead. 
-
-Write a function to extrapolate based on recent ToF sensor values, such that you can drive your robot quickly towards the wall and initiate your stunt at just the right time. While your solution in this lab does not have to be fast, part of your lab 8 grade will be based on the speed of your solution relative to your class mates. Be sure to demonstrate that your solution works by uploading videos and by plotting corresponding raw and estimated data in the same graph. 
 
 ### 4.B Implement the Kalman Filter on the Robot (Optional, for up to 4 bonus points!)
 
