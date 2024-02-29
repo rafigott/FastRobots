@@ -62,7 +62,7 @@ Below you can see an example of a simple PI controller acting on the TOF signal.
    - _Anything goes:_ The goal is a working system. When you have a reasonable control setup working, you should feel free to add any "hacks" that will improve your robot performance in a reliable way. If you don't have time to implement them, discussing what you imagine would help can still get you grading points. 
    - _Motor drivers:_ Recall [Lecture 6 on Actuators](https://cei-lab.github.io/ECE4960-2022/lectures/FastRobots-6-Actuators.pdf) and that the motor drivers have both coasting and active breaking modes. These might come in handy.
 
-<img src="./Figs/Lab6_TaskA_PIcontrol_example.png" width="400">
+<img src="../Figs/Lab6_TaskA_PIcontrol_example.png" width="400">
 
 Corresponding videos are here: 
 
