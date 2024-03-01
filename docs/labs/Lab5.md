@@ -72,11 +72,24 @@ Corresponding videos are here:
 
 In Lab 7, you will learn how the Kalman Filter works, you could implement this on your robot and use it to speed up sampling of the estimated distance-to-the-wall. However, getting the Kalman Filter to work in practice takes time. A simple but less accurate alternative is a data extrapolator. 
 
-Write a function to extrapolate new TOF values based on recent sensor values, such that you can drive your robot quickly towards the wall with high accuracy. Be sure to demonstrate that your solution works by uploading videos and by plotting corresponding raw and estimated data in the same graph. 
+Write a function to extrapolate new TOF values based on recent sensor values, such that you can drive your robot quickly towards the wall with high accuracy. Be sure to demonstrate that your solution works by uploading videos and by plotting corresponding raw and estimated data in the same graph.
+
+#### Instructions:
+
+1. Determine the frequency at which the ToF sensor is returning new data. 
+- This is likely the rate at which your PID control loop is running as well. We want to decouple these two rates. 
+2. Change your loop to calulate the PID control every loop, even if there is no new data from the ToF sensor.
+- Check if new data from the ToF sensor is ready. If it is, update the variable that PID controller is using to estimate the motor speed. 
+- If a new datapoint isn't ready, recalculate the PID control using using the last saved datapoint. 
+- The net effect this should have on your system should be the same. You PID control should now be running faster than your ToF sensor is generating new data.
+3. How fast is the PID control loop running? Compare this rate to ToF sensor rate.
+4. Rather than use an old datapoint to calulate the PID control, extrapolate an estimate for the car's distance to the wall using the last two datareadings from the ToF sensor. 
+- Calcuate the slope from the last two datapoint, and extrapolate the current distance based on the ammount of time that has passed since the last reading and the slope. 
+- This is a simple linear extrapolation algorithm. Everytime you get a new ToF reading, use it along with the previous reading to estimate the current distance to the wall untill a new reading is recieved. If you have any questions about this, please ask one of the TAs for clarification. 
 
 ## Tasks for 5000-level students
    
-Implement wind-up protection for your integrator. Argue for why this is necessary (you may for example demonstrate how your controller works reasonably independent of floor surface). 
+Implement wind-up protection for your integrator. Argue for why this is necessary (you may for example demonstrate how your controller works reasonably independent of floor surface). Demonstrate your system with and without wind-up protection. 
 
 ## Write-up
 
