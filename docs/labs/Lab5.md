@@ -49,7 +49,7 @@ Beyond the considerations mentioned above, think about the following:
 Below you can see an example of a simple PI controller acting on the TOF signal.
 
 **Tips and tricks:**
-   - _LOG DATA:_ If you don't want to repeat work during Lab 7, be sure to log all data (time stamped sensor values and motor outputs), as well as setup variables from at least one successful run. Even if you are doing orientation control, be sure to log ToF data as you speed towards the wall as well. 
+   - _LOG DATA:_ If you don't want to repeat work during Lab 7, be sure to log all data (time stamped sensor values and motor outputs), as well as setup variables from at least one successful run. Be sure to log ToF data as you speed towards the wall as well. 
    - _Lectures:_ Brush up on your PID control skills by checking out [Lectures 7 and 8](https://cei-lab.github.io/FastRobots-2023/lectures/).
    - _PID library:_ There exists an [Arduino PID library](https://playground.arduino.cc/Code/PIDLibrary/). You are welcome to use this library if you prefer, but we will only offer limited TA support if you run into issues. Implementing a basic PID controller from scratch is easy (<10 lines of code), and will give you more freedom in dealing with noise, wind-up, and system non-linearities. 
    - _Start simple:_ E.g. with a proportional controller running at low speeds and a generous setpoint, then you can work your way up to faster speeds, more advanced control, and more difficult setpoints if you have time. 
